@@ -85,6 +85,8 @@ This project highlights why some AES modes (e.g., **ECB**) are insecure for imag
 ```bash
 pip install pycryptodome pillow numpy
 
+### Run
+```bash
 python Main.py
 
 

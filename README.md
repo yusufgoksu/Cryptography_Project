@@ -1,125 +1,91 @@
- AES Image Encryption Project
-COMP453 – Cryptography Course
+# AES Image Encryption Project  
+### COMP453 – Cryptography Course
 
-This project demonstrates the encryption and decryption of BMP images using the AES algorithm in three different modes of operation:
+This project implements AES-based encryption and decryption of BMP images using three different block cipher modes: **ECB**, **CBC**, and **CTR**. The objective is to analyze the security, visual differences, performance, and reconstruction quality (PSNR) of each mode.
 
-ECB (Electronic Codebook)
+---
 
-CBC (Cipher Block Chaining)
+## 1. Overview
 
-CTR (Counter Mode)
+The project performs the following operations:
 
-The goal is to observe visual differences, analyze security properties, measure performance, and compute reconstruction quality using PSNR.
+- Converts a BMP image to a byte array and restores it  
+- Encrypts image data using AES (ECB, CBC, CTR)  
+- Decrypts ciphertext to reconstruct the original image  
+- Computes **PSNR (Peak Signal-to-Noise Ratio)**  
+- Measures encryption/decryption time  
+- Generates encrypted & decrypted BMP images  
 
-🚀 Features
+This project highlights why some AES modes (e.g., **ECB**) are insecure for image encryption.
 
-🔄 Convert BMP image → byte array → BMP image
+---
 
-🔐 Encrypt image data using AES (ECB/CBC/CTR)
+## 2. Features
 
-🔓 Decrypt ciphertext back into the original image
+- 🔄 BMP → Byte Array → BMP Reconstruction  
+- 🔐 AES Encryption (ECB, CBC, CTR)  
+- 🔓 AES Decryption  
+- 🧮 PSNR Calculation  
+- ⏱️ Performance Measurement  
+- 📊 Visual comparison of encrypted images  
+- 💾 Auto-generated output files in the `images/` directory  
 
-🧮 Calculate PSNR (Peak Signal-to-Noise Ratio)
+---
 
-⏱️ Measure encryption/decryption time for each mode
-
-📊 Compare visual results of encrypted images
-
-📁 Project Structure
+## 3. Project Structure
 📦 Cryptography_Project
- ├── Main.py
- ├── aes_functions.py
- ├── images/
- │     ├── penguin.bmp
- │     ├── restored_penguin.bmp
- │     ├── ECB_encrypted.bmp
- │     ├── CBC_encrypted.bmp
- │     ├── CTR_encrypted.bmp
- │     ├── ECB_decrypted.bmp
- │     ├── CBC_decrypted.bmp
- │     └── CTR_decrypted.bmp
- └── README.md
+├── Main.py
+├── aes_functions.py
+├── images/
+│ ├── penguin.bmp
+│ ├── restored_penguin.bmp
+│ ├── ECB_encrypted.bmp
+│ ├── CBC_encrypted.bmp
+│ ├── CTR_encrypted.bmp
+│ ├── ECB_decrypted.bmp
+│ ├── CBC_decrypted.bmp
+│ └── CTR_decrypted.bmp
+└── README.md
 
-🛠️ Technologies Used
 
-Python 3
+---
 
-PyCryptodome (AES encryption)
+## 4. Technologies Used
 
-NumPy
+- Python 3  
+- PyCryptodome (AES implementation)  
+- Pillow (PIL) for BMP processing  
+- NumPy for numerical operations  
 
-Pillow (PIL) for image handling
+---
 
-📌 AES Modes Summary
-🔹 ECB Mode
+## 5. AES Modes Summary
 
-Each block encrypted independently
+### 5.1 ECB – Electronic Codebook
+- Encrypts each block independently  
+- Fast but leaks visual patterns  
+- **Not suitable for image encryption**
 
-Fast, but leaks image patterns
+### 5.2 CBC – Cipher Block Chaining
+- Uses IV and chaining  
+- Eliminates image patterns  
+- More secure but slightly slower  
 
-Not suitable for image encryption
+### 5.3 CTR – Counter Mode
+- Turns AES into a stream cipher  
+- Best performance  
+- Secure and pattern-free  
+- Parallelizable  
 
-🔹 CBC Mode
+---
 
-Introduces chaining and IV
+## 6. How to Run
 
-Patterns completely removed
-
-More secure, slightly slower
-
-🔹 CTR Mode
-
-Stream-like operation using counter
-
-Best performance
-
-Highly secure, no visible artifacts
-
-▶️ How to Run
-
-Install dependencies:
-
+### Install Dependencies
+```bash
 pip install pycryptodome pillow numpy
 
-
-Run the main script:
-
+Run the Project
 python Main.py
 
 
-Output images will be generated in the images/ folder.
-
-📊 Outputs Generated
-
-Encrypted BMP images (ECB, CBC, CTR)
-
-Decrypted BMP images for all modes
-
-Restored original image
-
-Console output with:
-
-Encryption time
-
-Decryption time
-
-PSNR values
-
-🧪 Example Results (Sample)
-Mode	Encrypt Time	Decrypt Time	PSNR
-ECB	~0.002s	~0.000s	100
-CBC	~0.003s	~0.000s	100
-CTR	~0.002s	~0.001s	100
-📝 Conclusion
-
-This project demonstrates that:
-
-ECB is insecure due to pattern leakage
-
-CBC eliminates visual patterns, offering strong security
-
-CTR is the fastest mode while maintaining security
-
-AES encryption/decryption is lossless, confirmed by PSNR = 100
-
-Overall, CBC and CTR are well-suited for image encryption, while ECB should be avoided.

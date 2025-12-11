@@ -34,6 +34,7 @@ This project highlights why some AES modes (e.g., **ECB**) are insecure for imag
 
 ## 3. Project Structure
 📦 Cryptography_Project
+```bash
 ├── Main.py
 ├── aes_functions.py
 ├── images/
@@ -46,7 +47,7 @@ This project highlights why some AES modes (e.g., **ECB**) are insecure for imag
 │ ├── CBC_decrypted.bmp
 │ └── CTR_decrypted.bmp
 └── README.md
-
+```
 
 ---
 
